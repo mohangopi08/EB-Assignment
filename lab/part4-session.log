@@ -173,6 +173,3 @@ worker-89d8c47d7-m4q9b      1/1     Running     0          38m
 # Go TLS calls to K8s API fail under emulation.
 # On amd64 grading harness, all 11 should pass.
 
-========================================
-Session complete.
-========================================
