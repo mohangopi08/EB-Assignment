@@ -1,0 +1,47 @@
+^D=== Verifying lab state ===
+==> verifying goal state in namespace debug-lab
+  [32mPASS[0m  migrate Job completed
+  [32mPASS[0m  deployment backend: 1/1 ready
+  [32mPASS[0m  deployment gateway: 1/1 ready
+  [32mPASS[0m  deployment worker: 1/1 ready
+  [31mFAIL[0m  deployment reporter: 0/1 ready
+  [32mPASS[0m  deployment metrics: 1/1 ready
+  [32mPASS[0m  no pods in CrashLoopBackOff
+  [32mPASS[0m  ServiceAccount debug-lab/reporter can list pods
+  [31mFAIL[0m  backend does not answer on http://backend:8080/healthz
+  [31mFAIL[0m  gateway /status does not report backend=ok
+  [31mFAIL[0m  reporter /report does not return a pod count
+
+[31m4 check(s) failing[0m, 7 passing. Keep digging — every failure is a symptom.
+
+=== Pod status ===
+NAME                        READY   STATUS      RESTARTS   AGE
+backend-64b799c9c4-wxjs5    1/1     Running     0          35m
+gateway-69ccbcdc95-bp9ds    1/1     Running     0          35m
+metrics-758cd6c755-jtt2j    1/1     Running     0          35m
+migrate-kvt2q               0/1     Completed   0          35m
+reporter-54c7dc4679-6wdwq   0/1     Running     0          35m
+worker-89d8c47d7-m4q9b      1/1     Running     0          35m
+
+=== Checking reporter logs ===
+2026/11/06 19:25:42 pod list failed: parse pod list: unexpected end of JSON input
+2026/11/06 19:25:42 GET /healthz -> 503 (from 10.244.0.1:53236)
+2026/11/06 19:25:47 GET /healthz -> 503 (from 10.244.0.1:33462)
+2026/11/06 19:25:52 pod list failed: parse pod list: unexpected end of JSON input
+2026/11/06 19:25:52 GET /healthz -> 503 (from 10.244.0.1:33474)
+
+=== Checking backend connectivity ===
+pod "session-probe" deleted from debug-lab namespace
+
+=== Checking fixed values ===
+  port: 8081
+    BACKEND_URL: "http://backend:8080"
+      restartPolicy: Never
+  name: reporter
+  name: reporter-read
+  name: reporter-read
+  name: reporter-read
+    name: reporter
+            runAsUser: 65532
+
+Session complete.
