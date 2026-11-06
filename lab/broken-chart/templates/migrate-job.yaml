@@ -13,7 +13,7 @@ spec:
       labels:
         app: migrate
     spec:
-      restartPolicy: Always
+      restartPolicy: Never
       containers:
         - name: migrate
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
