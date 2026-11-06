@@ -78,4 +78,4 @@ I used Claude (Claude Code CLI) to help with:
 - Reviewing the broken chart to identify defects from code analysis
 - Drafting the Gateway API migration answer
 
-I reviewed all generated code, adjusted the Dockerfile maintainer label, and validated the Helm templates manually. The debugging approach and defect analysis were my own reasoning - AI helped with speed, not with understanding.
+I used Claude Code CLI to assist with code generation, debugging, and writing. I reviewed all outputs, directed the approach, and made manual adjustments.
