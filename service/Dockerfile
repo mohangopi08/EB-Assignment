@@ -7,7 +7,7 @@ RUN python -m py_compile app.py
 
 # ---- runtime stage ----
 FROM python:3.12.7-slim AS runtime
-LABEL maintainer="candidate"
+LABEL maintainer="mohan"
 
 RUN groupadd -r appuser && useradd -r -g appuser -d /app -s /sbin/nologin appuser
 
